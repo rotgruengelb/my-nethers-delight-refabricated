@@ -137,8 +137,25 @@ platform {
 			slug("farmers-delight-refabricated")
 			fabricLikeVersionRange = ">=${prop("deps.farmers-delight")}+refabricated"
 		}
-		optional("modmenu") {}
-		optional("jei") {}
+		optional("modmenu") {
+			slug("modmenu")
+		}
+		optional("jei") {
+			slug("jei")
+		}
+		optional("roughlyenoughitems") {
+			slug("rei", "roughly-enough-items")
+		}
+		if (sc.current.parsed <= "1.21.1") {
+			optional("emi") {
+				slug("emi")
+			}
+		}
+		if (sc.current.parsed >= "1.21.11") {
+			optional("rrv") {
+				slug("rrv")
+			}
+		}
 	}
 }
 
