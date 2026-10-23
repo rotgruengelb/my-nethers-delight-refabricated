@@ -25,6 +25,8 @@ import com.soytutta.mynethersdelight.common.loot.MNDRefabricatedLootModification
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
+//? if >=1.21.11
+//import net.fabricmc.fabric.api.recipe.v1.sync.RecipeSynchronization;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.api.registry.TillableBlockRegistry;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -74,6 +76,11 @@ public class MyNethersDelight {
 
 		UseEntityCallback.EVENT.register(CommonEvent::onFrogMagmaCakeInteraction);
 		UseEntityCallback.EVENT.register(StriderFoodEvent::onStriderFoodApplied);
+
+		//? if >=1.21.11 {
+		/*RecipeSynchronization.synchronizeRecipeSerializer(MNDRecipeSerializers.BLAZIER_HEATING);
+		RecipeSynchronization.synchronizeRecipeSerializer(MNDRecipeSerializers.BLAZIER_COOLING);
+		*///?}
 
 		DispenserBlock.registerBehavior(MNDItems.STRIDER_ROCK, new ProjectileDispenseBehavior(MNDItems.STRIDER_ROCK));
 
