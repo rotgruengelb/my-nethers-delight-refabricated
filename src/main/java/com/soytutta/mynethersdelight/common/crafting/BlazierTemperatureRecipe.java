@@ -21,7 +21,9 @@ import com.mojang.serialization.MapCodec;
 public class BlazierTemperatureRecipe extends CustomRecipe {
 
 	//? if >=26.1.2 {
-	/*public static final MapCodec<BlazierTemperatureRecipe> HEATING_MAP_CODEC = MapCodec.unit(BlazierTemperatureRecipe::heating);
+	/*public static final BlazierTemperatureRecipe HEATING = new BlazierTemperatureRecipe(true);
+	public static final BlazierTemperatureRecipe COOLING = new BlazierTemperatureRecipe(false);
+	public static final MapCodec<BlazierTemperatureRecipe> HEATING_MAP_CODEC = MapCodec.unit(BlazierTemperatureRecipe::heating);
 	public static final MapCodec<BlazierTemperatureRecipe> COOLING_MAP_CODEC = MapCodec.unit(BlazierTemperatureRecipe::cooling);
 	public static final StreamCodec<RegistryFriendlyByteBuf, BlazierTemperatureRecipe> HEATING_STREAM_CODEC = StreamCodec.unit(BlazierTemperatureRecipe.heating());
 	public static final StreamCodec<RegistryFriendlyByteBuf, BlazierTemperatureRecipe> COOLING_STREAM_CODEC = StreamCodec.unit(BlazierTemperatureRecipe.cooling());
@@ -42,11 +44,11 @@ public class BlazierTemperatureRecipe extends CustomRecipe {
 
 	//? if >=26.1.2 {
     /*public static BlazierTemperatureRecipe heating() {
-        return new BlazierTemperatureRecipe(true);
+        return HEATING;
     }
 
     public static BlazierTemperatureRecipe cooling() {
-        return new BlazierTemperatureRecipe(false);
+        return COOLING;
     }
 	*///?} else {
 	public static BlazierTemperatureRecipe heating(CraftingBookCategory category) {
