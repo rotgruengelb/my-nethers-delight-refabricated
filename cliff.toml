@@ -11,7 +11,6 @@ All notable changes to this project will be documented in this file. See [conven
 # A Tera template to be rendered for each release in the changelog.
 # See https://keats.github.io/tera/docs/#introduction
 body = """
----
 {% if version %}\
     {% if previous.version %}\
         ## [{{ version | trim_start_matches(pat="v") }}]($REPO/compare/{{ previous.version }}..{{ version }}) - {{ timestamp | date(format="%Y-%m-%d") }}
@@ -67,8 +66,7 @@ postprocessors = [
 conventional_commits = true
 # Exclude commits that do not match the conventional commits specification.
 filter_unconventional = false
-# Split commits on newlines, treating each line as an individual commit.
-split_commits = true
+split_commits = false
 # An array of regex based parsers to modify commit messages prior to further processing.
 commit_preprocessors = [
 	# Replace issue numbers with link templates to be updated in `changelog.postprocessors`.
@@ -89,6 +87,7 @@ commit_parsers = [
 	{ message = "^chore", group = "Chores" },
 	{ body = ".*security", group = "Security" },
 	{ message = ".*\\((ci|cd|dx)(/.*)?\\).*", group = "Development/Tooling" },
+	# { message = "^release", skip = true },
 
 	# Fallback
 	{ message = ".*", group = "Other" },
