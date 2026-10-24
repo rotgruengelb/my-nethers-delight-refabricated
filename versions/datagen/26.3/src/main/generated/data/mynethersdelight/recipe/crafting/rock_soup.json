@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:magma_cream",
+    "minecraft:magma_cream",
+    "mynethersdelight:strider_egg",
+    "mynethersdelight:strider_egg",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "mynethersdelight:rock_soup"
+  }
+}

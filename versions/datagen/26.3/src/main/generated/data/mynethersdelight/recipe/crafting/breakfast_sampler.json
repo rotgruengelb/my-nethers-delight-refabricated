@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "mynethersdelight:roasted_sausage",
+    "mynethersdelight:roasted_sausage",
+    [
+      "minecraft:honey_bottle",
+      "mynethersdelight:strider_egg"
+    ],
+    "#c:foods/cooked_egg",
+    "#c:foods/cooked_egg",
+    "#c:foods/bread",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "mynethersdelight:breakfast_sampler"
+  }
+}

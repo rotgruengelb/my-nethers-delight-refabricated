@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "mynethersdelight:bullet_pepper_crate"
+  ],
+  "result": {
+    "count": 9,
+    "id": "mynethersdelight:bullet_pepper"
+  }
+}

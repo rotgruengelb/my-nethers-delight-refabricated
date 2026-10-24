@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "mynethersdelight:ghasta"
+  ],
+  "result": [
+    {
+      "item": {
+        "id": "mynethersdelight:ghasmati"
+      }
+    },
+    {
+      "chance": 0.05,
+      "item": {
+        "id": "mynethersdelight:ghasmati"
+      }
+    }
+  ],
+  "tool": "#c:tools/knife"
+}

@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "#mynethersdelight:hot_spice",
+      "required": false
+    },
+    "minecraft:blaze_rod",
+    "minecraft:fire_charge",
+    "minecraft:magma_cream",
+    "minecraft:magma_block"
+  ]
+}

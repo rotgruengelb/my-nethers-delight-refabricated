@@ -1,0 +1,14 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 150,
+  "experience": 0.35,
+  "ingredients": [
+    "#c:foods/raw_chicken",
+    "#mynethersdelight:hot_spice",
+    "#c:crops/onion"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "mynethersdelight:hot_wings"
+  }
+}

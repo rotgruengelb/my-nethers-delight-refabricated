@@ -39,7 +39,9 @@ public class MNDCraftingRecipes {
 		recipesVanillaAlternatives(output);
 		recipesBlocks(output);
 		recipesCraftedMeals(output);
+		//? if <26.3 {
 		SpecialRecipeBuilder.special(FoodServingRecipe::new).save(output, "food_serving");
+		//?}
 		SpecialRecipeBuilder.special(BlazierTemperatureRecipe::heating)
 				.save(output,
 						"mynethersdelight:crafting/blazier_heating");
@@ -525,10 +527,8 @@ public class MNDCraftingRecipes {
 		shapeless(RecipeCategory.MISC, MNDItems.BURNT_ROLL)
 				.requires(Items.MAGMA_CREAM)
 				//? if >=26.1.2 {
-				/*/^26.1 removed the deprecated c:foods/raw_meats tag of the Fabric API, the
-				   remaining c:foods/raw_meat tag holds the same items.^/
-				.requires(ConventionalItemTags.RAW_MEAT_FOODS)
-				*///?} else {
+				//.requires(ConventionalItemTags.RAW_MEAT_FOODS)
+				//?} else {
 				.requires(ConventionalTags.FOODS_RAW_MEATS)
 				//?}
 				.unlockedBy("has_magma_cream", InventoryChangeTrigger.TriggerInstance.hasItems(Items.MAGMA_CREAM))

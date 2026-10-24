@@ -27,16 +27,26 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 //? if >=1.21.11
 //import net.fabricmc.fabric.api.recipe.v1.sync.RecipeSynchronization;
+//? if >=26.3 {
+
+//import net.fabricmc.fabric.api.item.v1.BlockTransformerHelper;
+//?} else {
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.api.registry.TillableBlockRegistry;
+//?}
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.resources.ResourceLocation;
+//? if <26.3 {
 import net.minecraft.world.item.HoeItem;
+//?}
 import net.minecraft.world.level.block.DispenserBlock;
+//? if >=26.3 {
+//import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+//?}
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vectorwing.farmersdelight.client.renderer.DefaultStoveRenderer;
@@ -47,7 +57,7 @@ import static folk.sisby.kaleido.api.WrappedConfig.createToml;
 public class MyNethersDelight {
 
 	public static final String MOD_ID = /*$ mod_id*/"mynethersdelight";
-	public static final String MOD_VERSION = /*$ mod_version*/"3.0.0-1.10.4.1";
+	public static final String MOD_VERSION = /*$ mod_version*/"3.0.0-1.10.4";
 	public static final String MOD_FRIENDLY_NAME = /*$ mod_name*/"My Nether's Delight Refabricated";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	private static final Platform PLATFORM = createPlatformInstance();
@@ -88,9 +98,17 @@ public class MyNethersDelight {
 			PoachingFailureRegistry.registerAll();
 		});
 
+		//? if >=26.3 {
+		
+		/*BlockTransformerHelper.registerStripping(MNDBlocks.BLOCK_OF_POWDERY_CANNON,
+				BlockStateProvider.of(MNDBlocks.BLOCK_OF_STRIPPED_POWDERY_CANNON.defaultBlockState()));
+		BlockTransformerHelper.registerTilling(MNDBlocks.RESURGENT_SOIL,
+				BlockStateProvider.of(MNDBlocks.RESURGENT_SOIL_FARMLAND.defaultBlockState()));
+		*///?} else {
 		StrippableBlockRegistry.register(MNDBlocks.BLOCK_OF_POWDERY_CANNON, MNDBlocks.BLOCK_OF_STRIPPED_POWDERY_CANNON);
 		TillableBlockRegistry.register(MNDBlocks.RESURGENT_SOIL, HoeItem::onlyIfAirAbove,
 				MNDBlocks.RESURGENT_SOIL_FARMLAND.defaultBlockState());
+		//?}
 	}
 
 	public static void onInitializeClient() {

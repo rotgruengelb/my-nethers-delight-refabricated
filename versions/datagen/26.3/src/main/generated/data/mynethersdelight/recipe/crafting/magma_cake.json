@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "farmersdelight:straw",
+    "H": "mynethersdelight:hot_cream",
+    "M": "minecraft:magma_cream",
+    "P": "mynethersdelight:pepper_powder"
+  },
+  "pattern": [
+    "MMM",
+    "PHP",
+    "###"
+  ],
+  "result": {
+    "id": "mynethersdelight:magma_cake_block"
+  }
+}

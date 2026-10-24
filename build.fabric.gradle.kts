@@ -3,6 +3,141 @@ plugins {
 	id("dev.kikugie.loom-back-compat")
 }
 
+platform {
+	loader = "fabric"
+	dependencies {
+		required("minecraft") {
+			fabricLikeVersionRange = prop("deps.minecraft")
+		}
+		required("fabric-api") {
+			slug("fabric-api")
+			fabricLikeVersionRange = ">=${prop("deps.fabric-api")}"
+		}
+		required("fabricloader") {
+			fabricLikeVersionRange = ">=${prop("deps.fabric-loader")}"
+		}
+		required("farmersdelight") {
+			slug("farmers-delight-refabricated")
+			fabricLikeVersionRange = ">=${prop("deps.farmers-delight")}+refabricated"
+		}
+		optional("modmenu") {
+			slug("modmenu")
+		}
+		optional("jei") {
+			slug("jei")
+		}
+		optional("roughlyenoughitems") {
+			slug("rei", "roughly-enough-items")
+		}
+		if (sc.current.parsed <= "1.21.1") {
+			optional("emi") {
+				slug("emi")
+			}
+		}
+		if (sc.current.parsed >= "1.21.11") {
+			optional("rrv") {
+				slug("rrv")
+			}
+		}
+	}
+}
+
+loom {
+	accessWidenerPath = rootProject.file("src/main/resources/aw/${sc.current.version}.accesswidener")
+	val devJvmArgs = propsList("mod", "dev_jvm_args") +
+		propsList("mod", "dev_jvm_args_mixin_debug")
+	runs.named("client") {
+		client()
+		generateRunConfig.set(true)
+		runDirectory.set(layout.projectDirectory.dir("run"))
+		programArguments.add("--username=Dev")
+		jvmArguments.addAll(devJvmArgs)
+		displayName.set("Fabric Client")
+	}
+	runs.named("server") {
+		server()
+		generateRunConfig.set(true)
+		runDirectory.set(layout.projectDirectory.dir("run"))
+		jvmArguments.addAll(devJvmArgs)
+		displayName.set("Fabric Server")
+	}
+}
+
+if (sc.active?.project == project.path) {
+	sourceSets.main {
+		java.exclude("**/generated/stonecutter/**")
+	}
+}
+
+tasks.processResources {
+	if (sc.current.parsed >= "26.3") {
+		exclude("data/mynethersdelight/worldgen/configured_feature/**")
+	}
+}
+
+fabricApi {
+	configureDataGeneration {
+		outputDirectory = file("${rootDir}/versions/datagen/${sc.current.version}/src/main/generated")
+		client = true
+		modId = "mynethersdelight"
+	}
+}
+
+repositories {
+	mavenCentral()
+	strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc") { name = "TerraformersMC" }
+	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
+	strictMaven("https://repo.sleeping.town/", "folk.sisby") { name = "Sleeping Town" }
+	strictMaven("https://maven.cassian.cc/", "vectorwing") { name = "Cassian's Maven" }
+	strictMaven("https://maven.blamejared.com/", "mezz.jei", "net.mezzdev.config") { name = "BlameJared" }
+	strictMaven("https://jitpack.io", "com.github.Chocohead") { name = "JitPack" }
+}
+
+configurations.all {
+	resolutionStrategy {
+		force("net.fabricmc:fabric-loader:${prop("deps.fabric-loader")}")
+	}
+}
+
+dependencies {
+	minecraft("com.mojang:minecraft:${prop("deps.minecraft")}")
+	if (sc.current.parsed < "26") {
+		mappings(loom.layered {
+			officialMojangMappings()
+			if (sc.properties.contains("deps.parchment"))
+				parchment("org.parchmentmc.data:parchment-${prop("deps.parchment")}@zip")
+		})
+	}
+	modImplementation("net.fabricmc:fabric-loader:${prop("deps.fabric-loader")}")
+	// implementation(libs.moulberry.mixinconstraints)
+	// include(libs.moulberry.mixinconstraints)
+	modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
+	modLocalRuntime("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
+	implementation("folk.sisby:kaleido-config:0.3.3+1.3.2")
+	include("folk.sisby:kaleido-config:0.3.3+1.3.2")
+
+	modImplementation("vectorwing:FarmersDelight:${prop("deps.farmers-delight")}+refabricated") {
+		exclude(group = "net.fabricmc")
+	}
+
+	modCompileOnly("mezz.jei:jei-${prop("deps.minecraft")}-common-api:${prop("deps.jei")}")
+	modCompileOnly("mezz.jei:jei-${prop("deps.minecraft")}-fabric-api:${prop("deps.jei")}")
+
+	// modLocalRuntime("mezz.jei:jei-${prop("deps.minecraft")}-fabric:${prop("deps.jei")}")
+}
+
+
+afterEvaluate {
+	tasks.register("printResDirs") {
+		doLast {
+			project.extensions.getByType<SourceSetContainer>().named("main").get().resources.srcDirs.forEach {
+				println("RES: $it")
+			}
+		}
+	}
+}
+
+
 stonecutter {
 	replacements.string(current.parsed >= "1.21.11") {
 		replace("ResourceLocation", "Identifier")
@@ -118,132 +253,35 @@ stonecutter {
 		replace("ItemTags.SLABS", "BlockItemTags.SLABS.item()")
 		replace("ItemTags.STAIRS", "BlockItemTags.STAIRS.item()")
 	}
-}
-
-platform {
-	loader = "fabric"
-	dependencies {
-		required("minecraft") {
-			fabricLikeVersionRange = prop("deps.minecraft")
-		}
-		required("fabric-api") {
-			slug("fabric-api")
-			fabricLikeVersionRange = ">=${prop("deps.fabric-api")}"
-		}
-		required("fabricloader") {
-			fabricLikeVersionRange = ">=${prop("deps.fabric-loader")}"
-		}
-		required("farmersdelight") {
-			slug("farmers-delight-refabricated")
-			fabricLikeVersionRange = ">=${prop("deps.farmers-delight")}+refabricated"
-		}
-		optional("modmenu") {
-			slug("modmenu")
-		}
-		optional("jei") {
-			slug("jei")
-		}
-		optional("roughlyenoughitems") {
-			slug("rei", "roughly-enough-items")
-		}
-		if (sc.current.parsed <= "1.21.1") {
-			optional("emi") {
-				slug("emi")
-			}
-		}
-		if (sc.current.parsed >= "1.21.11") {
-			optional("rrv") {
-				slug("rrv")
-			}
-		}
-	}
-}
-
-loom {
-	accessWidenerPath = rootProject.file("src/main/resources/aw/${sc.current.version}.accesswidener")
-	val devJvmArgs = propsList("mod", "dev_jvm_args") +
-		propsList("mod", "dev_jvm_args_mixin_debug")
-	runs.named("client") {
-		client()
-		generateRunConfig.set(true)
-		runDirectory.set(layout.projectDirectory.dir("run"))
-		programArguments.add("--username=Dev")
-		jvmArguments.addAll(devJvmArgs)
-		displayName.set("Fabric Client")
-	}
-	runs.named("server") {
-		server()
-		generateRunConfig.set(true)
-		runDirectory.set(layout.projectDirectory.dir("run"))
-		jvmArguments.addAll(devJvmArgs)
-		displayName.set("Fabric Server")
-	}
-}
-
-if (sc.active?.project == project.path) {
-	sourceSets.main {
-		java.exclude("**/generated/stonecutter/**")
-	}
-}
-
-fabricApi {
-	configureDataGeneration {
-		outputDirectory = file("${rootDir}/versions/datagen/${sc.current.version}/src/main/generated")
-		client = true
-		modId = "mynethersdelight"
-	}
-}
-
-repositories {
-	mavenCentral()
-	strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc") { name = "TerraformersMC" }
-	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
-	strictMaven("https://repo.sleeping.town/", "folk.sisby") { name = "Sleeping Town" }
-	strictMaven("https://repo.greenhouse.house/releases/", "vectorwing") { name = "Greenhouse Maven" }
-	strictMaven("https://maven.blamejared.com/", "mezz.jei", "net.mezzdev.config") { name = "BlameJared" }
-	strictMaven("https://jitpack.io", "com.github.Chocohead") { name = "JitPack" }
-}
-
-configurations.all {
-	resolutionStrategy {
-		force("net.fabricmc:fabric-loader:${prop("deps.fabric-loader")}")
-	}
-}
-
-dependencies {
-	minecraft("com.mojang:minecraft:${prop("deps.minecraft")}")
-	if (sc.current.parsed < "26") {
-		mappings(loom.layered {
-			officialMojangMappings()
-			if (sc.properties.contains("deps.parchment"))
-				parchment("org.parchmentmc.data:parchment-${prop("deps.parchment")}@zip")
-		})
-	}
-	modImplementation("net.fabricmc:fabric-loader:${prop("deps.fabric-loader")}")
-	// implementation(libs.moulberry.mixinconstraints)
-	// include(libs.moulberry.mixinconstraints)
-	modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
-	modLocalRuntime("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
-	implementation("folk.sisby:kaleido-config:0.3.3+1.3.2")
-	include("folk.sisby:kaleido-config:0.3.3+1.3.2")
-
-	modImplementation("vectorwing:FarmersDelight:${prop("deps.farmers-delight")}+refabricated") {
-		exclude(group = "net.fabricmc")
-	}
-
-	modCompileOnly("mezz.jei:jei-${prop("deps.minecraft")}-common-api:${prop("deps.jei")}")
-	modCompileOnly("mezz.jei:jei-${prop("deps.minecraft")}-fabric-api:${prop("deps.jei")}")
-
-	// modLocalRuntime("mezz.jei:jei-${prop("deps.minecraft")}-fabric:${prop("deps.jei")}")
-}
-
-
-afterEvaluate {
-	tasks.register("printResDirs") {
-		doLast {
-			project.extensions.getByType<SourceSetContainer>().named("main").get().resources.srcDirs.forEach {
-				println("RES: $it")
-			}
-		}
+	replacements.string(current.parsed >= "26.3") {
+		replace("isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state)", "isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, BonemealSource source)")
+		replace("isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state)", "isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source)")
+		replace("performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state)", "performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source)")
+		replace("growable.isValidBonemealTarget(level, position, state)", "growable.isValidBonemealTarget(level, position, state, BonemealSource.MOB)")
+		replace("growable.performBonemeal(level, level.getRandom(), position, state)", "growable.performBonemeal(level, level.getRandom(), position, state, BonemealSource.MOB)")
+		replace("net.minecraft.world.level.storage.loot.providers.number.ConstantValue", "net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders")
+		replace("ConstantValue.exactly(6.0F)", "ContextIntProviders.exactly(6)")
+		replace("ConstantValue.exactly(2.0F)", "ContextIntProviders.exactly(2)")
+		replace("ConstantValue.exactly(3.0F)", "ContextIntProviders.exactly(3)")
+		replace("ConstantValue.exactly(amount)", "ContextIntProviders.exactly(amount)")
+		replace("ConstantValue.exactly(maxValue - value)", "ContextIntProviders.exactly(maxValue - value)")
+		replace("net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition", "net.minecraft.world.level.storage.loot.predicates.MatchBlock")
+		replace("HolderLookup<Enchantment> enchantments", "HolderGetter<Enchantment> enchantments")
+		replace("randomChanceAndLootingBoost(registries,", "randomChanceAndLootingBoost(enchantments,")
+		replace("PushReaction.DESTROY", "PushReaction.POPPED")
+		replace("PushReaction.NORMAL", "PushReaction.PUSH_PULL")
+		replace("PushReaction.BLOCK", "PushReaction.IMMOVEABLE")
+		replace("PushReaction.IGNORE", "PushReaction.IGNORE_ENTITY")
+		replace("PushReaction.PUSH_ONLY", "PushReaction.PUSH")
+		replace("entity.hurtMarked = true", "entity.syncVelocity = true")
+		replace("SoundEvents.AXE_WAX_OFF,", "SoundEvents.AXE_WAX_OFF.value(),")
+		replace("player.drop(new ItemStack(serving), false)", "player.drop(new ItemStack(serving), false, Prediction.SERVER_ONLY)")
+		replace("poseStack.mulPose(Axis.YP.rotationDegrees(yRot));", "poseStack.rotateDegrees(Axis.YP, yRot);")
+		replace("poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));", "poseStack.rotateDegrees(Axis.XP, 90.0F);")
+		replace("public class PowderyCaneFeature extends Feature<PowderyCaneConfiguration> {", "public class PowderyCaneFeature implements Feature {")
+		replace("public record PowderyCaneConfiguration(int tries, int xzSpread, int ySpread) implements FeatureConfiguration {", "public record PowderyCaneConfiguration(int tries, int xzSpread, int ySpread) {")
+		replace("public static final Codec<PowderyCaneConfiguration> CODEC = RecordCodecBuilder.create(instance -> instance.group(", "public static final MapCodec<PowderyCaneConfiguration> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(")
+		replace("ResourceKey<Feature<?>> POWDERY_CANE_KEY", "ResourceKey<Feature> POWDERY_CANE_KEY")
+		replace("public static final Feature<PowderyCaneConfiguration> POWDERY_CANE", "public static final Feature POWDERY_CANE")
 	}
 }

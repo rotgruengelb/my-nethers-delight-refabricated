@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    [
+      "minecraft:soul_sand",
+      "minecraft:soul_soil"
+    ],
+    "minecraft:rotten_flesh",
+    "minecraft:rotten_flesh",
+    [
+      "minecraft:warped_roots",
+      "minecraft:crimson_roots"
+    ],
+    [
+      "minecraft:crimson_roots",
+      "minecraft:warped_roots",
+      "farmersdelight:straw"
+    ],
+    "minecraft:bone_meal",
+    "minecraft:bone_meal",
+    "minecraft:bone_meal",
+    "minecraft:bone_meal"
+  ],
+  "result": {
+    "id": "mynethersdelight:letios_compost"
+  }
+}

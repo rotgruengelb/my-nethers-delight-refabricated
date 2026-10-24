@@ -6,7 +6,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.state.BlockState;
+//? if <26.1.2 {
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+//?}
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

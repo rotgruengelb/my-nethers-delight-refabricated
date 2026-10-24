@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "mynethersdelight:hot_wings",
+    "mynethersdelight:hot_wings",
+    "mynethersdelight:hot_wings",
+    "minecraft:bucket"
+  ],
+  "result": {
+    "id": "mynethersdelight:hot_wings_bucket"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 1.0,
+  "ingredients": [
+    [
+      "mynethersdelight:hoglin_loin",
+      "mynethersdelight:hoglin_sausage",
+      "mynethersdelight:roasted_sausage",
+      "mynethersdelight:cooked_loin"
+    ],
+    "#c:crops/potato",
+    "#c:crops/carrot",
+    [
+      "mynethersdelight:bullet_pepper",
+      "mynethersdelight:pepper_powder"
+    ]
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "mynethersdelight:spicy_hoglin_stew"
+  }
+}

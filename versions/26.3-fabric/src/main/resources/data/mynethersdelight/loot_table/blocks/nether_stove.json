@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "pool1",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mynethersdelight:nether_bricks_stove",
+          "condition": {
+            "type": "minecraft:match_block",
+            "blocks": "mynethersdelight:nether_stove",
+            "state": {
+              "soul": "false"
+            }
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mynethersdelight:nether_bricks_soul_stove",
+          "condition": {
+            "type": "minecraft:match_block",
+            "blocks": "mynethersdelight:nether_stove",
+            "state": {
+              "soul": "true"
+            }
+          }
+        }
+      ],
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      }
+    }
+  ]
+}

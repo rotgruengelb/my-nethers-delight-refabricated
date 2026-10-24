@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "mynethersdelight:magma_cake_block"
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 7,
+        "id": "mynethersdelight:magma_cake_slice"
+      }
+    }
+  ],
+  "tool": "#c:tools/knife"
+}

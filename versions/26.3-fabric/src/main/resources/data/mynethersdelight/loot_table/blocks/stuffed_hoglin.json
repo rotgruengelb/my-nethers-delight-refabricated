@@ -1,0 +1,83 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "pool1",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mynethersdelight:roast_stuffed_hoglin"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "mynethersdelight:stuffed_hoglin",
+        "state": {
+          "servings": "11",
+          "part": "head"
+        }
+      }
+    },
+    {
+      "name": "pool2",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mynethersdelight:plate_of_stuffed_hoglin"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:inverted",
+            "term": {
+              "type": "minecraft:match_block",
+              "blocks": "mynethersdelight:stuffed_hoglin",
+              "state": {
+                "servings": "11"
+              }
+            }
+          },
+          {
+            "type": "minecraft:inverted",
+            "term": {
+              "type": "minecraft:match_block",
+              "blocks": "mynethersdelight:stuffed_hoglin",
+              "state": {
+                "servings": "0"
+              }
+            }
+          },
+          {
+            "type": "minecraft:match_block",
+            "blocks": "mynethersdelight:stuffed_hoglin",
+            "state": {
+              "part": "head"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "pool3",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bowl"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "mynethersdelight:stuffed_hoglin",
+        "state": {
+          "servings": "0",
+          "part": "head"
+        }
+      }
+    }
+  ]
+}

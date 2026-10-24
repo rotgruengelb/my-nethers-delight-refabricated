@@ -467,6 +467,16 @@ BlazierBlockEntity extends BlockEntity implements Clearable {
 
     public NonNullList<ItemStack> getItems() { return this.items; }
 
+    //? if >=1.21.11 {
+    /*@Override
+    public void preRemoveSideEffects(BlockPos pos, BlockState state) {
+        if (this.level != null) {
+            Containers.dropContents(this.level, pos, this.getItems());
+        }
+        super.preRemoveSideEffects(pos, state);
+    }
+    *///?}
+
     @Override
     //? if >=1.21.11 {
     //protected void applyImplicitComponents(DataComponentGetter input) {

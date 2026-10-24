@@ -15,10 +15,9 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(CactusBlock.class)
 public class CactusBlockMixin {
 	//? if >=26.1.2 {
-    /*/^26.1 moved the is method of the block state to the typed instance interface, the
-       invocation of the block state is a different one.^/
-    @ModifyExpressionValue(method = "canSurvive", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;is(Ljava/lang/Object;)Z"))
-	*///?} else {
+    
+    //@ModifyExpressionValue(method = "canSurvive", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;is(Ljava/lang/Object;)Z"))
+	//?} else {
     @ModifyExpressionValue(method = "canSurvive", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;is(Lnet/minecraft/world/level/block/Block;)Z"))
     //?}
     private boolean mynethersdelightrefabricated$allowPlantsOnCactus(boolean original, BlockState state, LevelReader level, BlockPos pos) {

@@ -33,7 +33,11 @@ public class ResurgentSoilFarmlandBlock extends FarmBlock {
             state -> state.getBlock() instanceof TomatoBlock;
 
     public ResurgentSoilFarmlandBlock(Properties properties) {
+        //? if >=26.3 {
+        //super(MNDBlocks.RESURGENT_SOIL, properties);
+        //?} else {
         super(properties);
+        //?}
     }
 
     private static boolean hasFireOrLava(LevelReader level, BlockPos pos) {

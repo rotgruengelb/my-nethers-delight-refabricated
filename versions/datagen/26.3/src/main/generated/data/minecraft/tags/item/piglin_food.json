@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "#mynethersdelight:stuffed_hoglin_items",
+      "required": false
+    },
+    {
+      "id": "#c:foods/cooked_hoglin",
+      "required": false
+    },
+    {
+      "id": "#c:foods/raw_hoglin",
+      "required": false
+    }
+  ]
+}

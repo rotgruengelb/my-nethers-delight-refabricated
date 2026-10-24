@@ -1,6 +1,8 @@
 package com.soytutta.mynethersdelight.common.block.crops;
 
+//? if <26.3 {
 import com.mojang.serialization.MapCodec;
+//?}
 import com.soytutta.mynethersdelight.common.registry.MNDBlocks;
 import com.soytutta.mynethersdelight.common.registry.MNDItems;
 import com.soytutta.mynethersdelight.common.tag.MNDTags;
@@ -25,14 +27,18 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PowderyCannonSaplingBlock extends Block implements BonemealableBlock {
+    //? if <26.3 {
     public static final MapCodec<PowderyCannonSaplingBlock> CODEC = simpleCodec(PowderyCannonSaplingBlock::new);
+    //?}
     public PowderyCannonSaplingBlock(Properties properties) {
         super(properties);
     }
 
+    //? if <26.3 {
     public MapCodec<PowderyCannonSaplingBlock> codec() {
         return CODEC;
     }
+    //?}
     protected static final VoxelShape SAPLING_SHAPE = Block.box(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
 

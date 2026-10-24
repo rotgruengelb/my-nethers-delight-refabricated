@@ -4,7 +4,9 @@ package com.soytutta.mynethersdelight.common.block;
 
 import com.soytutta.mynethersdelight.common.utility.MNDItemResults;
 
+//? if <26.3 {
 import com.mojang.serialization.MapCodec;
+//?}
 import com.soytutta.mynethersdelight.common.tag.MNDTags;
 //? if <1.21.11 {
 import com.soytutta.mynethersdelight.common.block.entity.NetherStoveBlockEntity;
@@ -38,7 +40,9 @@ import vectorwing.farmersdelight.common.block.entity.AbstractStoveBlockEntity;
 import vectorwing.farmersdelight.common.registry.ModSounds;
 
 public class NetherStoveBlock extends AbstractStoveBlock {
+    //? if <26.3 {
     public static final MapCodec<NetherStoveBlock> CODEC = simpleCodec(NetherStoveBlock::new);
+    //?}
 
     public static final BooleanProperty SOUL = BooleanProperty.create("soul");
 

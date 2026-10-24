@@ -76,3 +76,10 @@ deps.fabric-api = "0.161.0+26.2"
 deps.modmenu = "20.0.2"
 deps.farmers-delight = "26.2-3.6.7"
 deps.jei = "30.47.0.239"
+
+[fabric."26.3"]
+deps.minecraft = "26.3"
+deps.fabric-api = "0.165.0+26.3"
+deps.modmenu = "21.0.0"
+deps.farmers-delight = "26.3-3.6.29"
+deps.jei = "31.16.0.90"

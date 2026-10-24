@@ -1,0 +1,24 @@
+{
+  "values": [
+    "minecraft:magma_block",
+    "mynethersdelight:magma_cake_block",
+    "minecraft:lantern",
+    "minecraft:torch",
+    "mynethersdelight:powdery_torch",
+    "minecraft:soul_torch",
+    "minecraft:soul_lantern",
+    "minecraft:furnace",
+    "minecraft:smoker",
+    "minecraft:blast_furnace",
+    "mynethersdelight:nether_stove",
+    "farmersdelight:stove",
+    {
+      "id": "#minecraft:campfires",
+      "required": false
+    },
+    {
+      "id": "#minecraft:candles",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": "#mynethersdelight:boiled_egg_candidate",
+  "result": {
+    "id": "mynethersdelight:boiled_egg"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "nether_trophy",
+  "key": {
+    "#": "mynethersdelight:hoglin_hide",
+    "B": "minecraft:bone_block",
+    "G": "minecraft:gold_ingot",
+    "W": "#minecraft:planks",
+    "b": "minecraft:bone"
+  },
+  "pattern": [
+    "W#W",
+    "bBb",
+    "WGW"
+  ],
+  "result": {
+    "id": "mynethersdelight:hoglin_trophy"
+  }
+}

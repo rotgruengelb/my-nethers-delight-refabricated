@@ -1,0 +1,14 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 50,
+  "experience": 0.35,
+  "ingredients": [
+    "minecraft:magma_cream",
+    "minecraft:magma_cream",
+    "#c:foods/raw_meat"
+  ],
+  "result": {
+    "count": 2,
+    "id": "mynethersdelight:burnt_roll"
+  }
+}

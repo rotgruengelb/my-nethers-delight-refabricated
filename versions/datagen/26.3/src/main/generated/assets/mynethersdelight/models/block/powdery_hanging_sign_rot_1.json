@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_hanging_sign_rot_1",
+  "textures": {
+    "all": "mynethersdelight:block/powdery_hanging_sign",
+    "particle": "mynethersdelight:block/powdery_planks"
+  }
+}

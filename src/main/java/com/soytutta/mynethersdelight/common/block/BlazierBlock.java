@@ -1,13 +1,13 @@
 package com.soytutta.mynethersdelight.common.block;
 
-import net.minecraft.server.level.ServerLevel;
-
 import com.soytutta.mynethersdelight.common.utility.MNDItemResults;
 import com.soytutta.mynethersdelight.common.utility.MNDResults;
 import com.soytutta.mynethersdelight.common.utility.MNDTextUtils;
 
+//? if <26.3 {
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+//?}
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.Optional;
@@ -86,8 +86,10 @@ import vectorwing.farmersdelight.common.block.AbstractStoveBlock;
 
 public class BlazierBlock extends BaseEntityBlock {
 
+    //? if <26.3 {
     public static final MapCodec<BlazierBlock> CODEC = RecordCodecBuilder.mapCodec((p) ->
             p.group(propertiesCodec()).apply(p, BlazierBlock::new));
+    //?}
 
     protected static final VoxelShape PLATE_SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 2.0, 15.0);
     protected static final VoxelShape SHAPE_BLAZEFIRE = Shapes.joinUnoptimized(PLATE_SHAPE, Block.box(2.0F, 0.0F, 2.0F, 14.0F, 6.0F, 14.0F), BooleanOp.OR);
@@ -160,8 +162,10 @@ public class BlazierBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     //?}
 
+    //? if <26.3 {
     @Override
     public MapCodec<BlazierBlock> codec() { return CODEC; }
+    //?}
 
     public BlazierBlock(Properties properties) {
         super(properties);
@@ -262,7 +266,9 @@ public class BlazierBlock extends BaseEntityBlock {
             boolean isLit = state.getValue(LIT);
 
             if (!isLit) {
-                level.destroyBlock(pos, true, player);
+                level.destroyBlock(pos, false, player);
+                Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(),
+                        new ItemStack(Items.NETHER_BRICK));
                 return MNDResults.consume();
             }
 
@@ -392,19 +398,9 @@ public class BlazierBlock extends BaseEntityBlock {
         return stack;
     }
 
-    //? if >=1.21.11 {
-    /*@Override
-    protected void affectNeighborsAfterRemoval(BlockState state, ServerLevel level, BlockPos pos,
-                                               boolean movedByPiston) {
-        if (!state.is(this)) {
-            BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof BlazierBlockEntity blazeEntity) {
-                Containers.dropContents(level, pos, blazeEntity.getItems());
-            }
-        }
-        super.affectNeighborsAfterRemoval(state, level, pos, movedByPiston);
-    }
-    *///?} else {
+    // 1.21.11 removes the block entity before the block is told about the removal, the
+    // items of the blazier are dropped by the block entity itself.
+    //? if <1.21.11 {
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos,
                             BlockState newState, boolean isMoving) {

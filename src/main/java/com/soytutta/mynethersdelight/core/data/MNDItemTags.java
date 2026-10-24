@@ -14,9 +14,9 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 //? if >=26.2 {
-/*/^26.2 merged the block tags and the item tags into one registry of tag ids.^/
-import net.minecraft.tags.BlockItemTags;
-*///?}
+
+//import net.minecraft.tags.BlockItemTags;
+//?}
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;

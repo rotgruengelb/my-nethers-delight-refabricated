@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 1.0,
+  "ingredients": [
+    "#c:foods/boiled_egg",
+    "#c:foods/boiled_egg",
+    [
+      "farmersdelight:minced_beef",
+      "mynethersdelight:hoglin_sausage"
+    ],
+    "#c:foods/bread"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "mynethersdelight:scotch_eggs"
+  }
+}

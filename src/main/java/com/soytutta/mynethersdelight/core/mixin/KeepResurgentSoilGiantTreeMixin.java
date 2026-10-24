@@ -10,9 +10,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+//? if <26.1.2 {
 @MixinEnvironment(type = MixinEnvironment.Env.MAIN)
 @Mixin(Feature.class)
-
+//?}
 public class KeepResurgentSoilGiantTreeMixin {
 	//? if <26.1.2 {
     @Inject(at = @At(value = "HEAD"), method = "isGrassOrDirt", cancellable = true)

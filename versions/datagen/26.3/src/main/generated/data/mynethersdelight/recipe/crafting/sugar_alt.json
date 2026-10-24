@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "mynethersdelight:strider_egg"
+  ],
+  "result": {
+    "id": "minecraft:sugar"
+  }
+}

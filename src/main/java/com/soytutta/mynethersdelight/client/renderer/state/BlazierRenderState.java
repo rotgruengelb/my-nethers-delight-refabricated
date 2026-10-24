@@ -8,9 +8,6 @@ import net.minecraft.core.Direction;
 import java.util.ArrayList;
 import java.util.List;
 
-/^*
- * Render state of the blazier, 1.21.11 renders block entities from an extracted state.
- ^/
 public class BlazierRenderState extends BlockEntityRenderState {
 	public Direction facing = Direction.NORTH;
 	public boolean twoSlots;

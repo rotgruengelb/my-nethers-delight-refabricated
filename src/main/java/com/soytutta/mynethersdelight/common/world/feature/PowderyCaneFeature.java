@@ -1,6 +1,11 @@
 package com.soytutta.mynethersdelight.common.world.feature;
 
 import com.mojang.serialization.Codec;
+//? if >=26.3 {
+
+/*import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+*///?}
 import com.soytutta.mynethersdelight.common.block.crops.PowderyCaneBlock;
 import com.soytutta.mynethersdelight.common.block.crops.PowderyFlowerBlock;
 import com.soytutta.mynethersdelight.common.registry.MNDBlocks;
@@ -11,8 +16,11 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BambooLeaves;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.Feature;
+//? if <26.3 {
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+//?}
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,16 +29,43 @@ import java.util.List;
 import java.util.Set;
 
 public class PowderyCaneFeature extends Feature<PowderyCaneConfiguration> {
+    //? if >=26.3 {
+    
+    /*private final PowderyCaneConfiguration config;
+
+    public static final MapCodec<PowderyCaneFeature> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            PowderyCaneConfiguration.CODEC.forGetter(feature -> feature.config)
+    ).apply(instance, PowderyCaneFeature::new));
+    *///?}
+
+    //? if >=26.3 {
+    /*public PowderyCaneFeature(PowderyCaneConfiguration config) {
+        this.config = config;
+    }
+    *///?} else {
     public PowderyCaneFeature(Codec<PowderyCaneConfiguration> config) {
         super(config);
     }
+    //?}
+
+    //? if >=26.3 {
+    /*@Override
+    public MapCodec<PowderyCaneFeature> codec() {
+        return CODEC;
+    }
+    *///?}
 
     @Override
+    //? if >=26.3 {
+    /*public boolean place(WorldGenLevel level, ChunkGenerator chunkGenerator, RandomSource random, BlockPos origin) {
+        PowderyCaneConfiguration config = this.config;
+    *///?} else {
     public boolean place(FeaturePlaceContext<PowderyCaneConfiguration> context) {
         PowderyCaneConfiguration config = context.config();
         WorldGenLevel level = context.level();
         BlockPos origin = context.origin();
         RandomSource random = context.random();
+    //?}
         BlockPos center = findPatchCenter(level, origin, random, config);
         if (center == null) {
             return false;
