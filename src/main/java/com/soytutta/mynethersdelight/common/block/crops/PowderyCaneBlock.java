@@ -3,7 +3,9 @@ package com.soytutta.mynethersdelight.common.block.crops;
 import com.soytutta.mynethersdelight.common.utility.MNDItemResults;
 import com.soytutta.mynethersdelight.common.utility.MNDTools;
 
+//? if <26.3 {
 import com.mojang.serialization.MapCodec;
+//?}
 import com.soytutta.mynethersdelight.common.block.utility.MNDBlockStateProperties;
 import com.soytutta.mynethersdelight.common.registry.MNDBlocks;
 import com.soytutta.mynethersdelight.common.registry.MNDItems;
@@ -52,7 +54,9 @@ import static com.soytutta.mynethersdelight.common.block.utility.MNDBlockStatePr
 
 public class PowderyCaneBlock extends BushBlock implements BonemealableBlock {
 
+    //? if <26.3 {
     public static final MapCodec<PowderyCaneBlock> CODEC = simpleCodec(PowderyCaneBlock::new);
+    //?}
     public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
@@ -72,10 +76,12 @@ public class PowderyCaneBlock extends BushBlock implements BonemealableBlock {
                 (state, world, pos, neighbor) -> getBlockPathType(state, world, pos, null));
     }
 
+    //? if <26.3 {
     @Override
     public MapCodec<BushBlock> codec() {
         return CODEC.xmap(block -> block, block -> (PowderyCaneBlock) block);
     }
+    //?}
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
@@ -204,7 +210,6 @@ public class PowderyCaneBlock extends BushBlock implements BonemealableBlock {
         }
     }
 
-	// QPORT TODO
     protected void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         if (!state.is(this)) return;
 

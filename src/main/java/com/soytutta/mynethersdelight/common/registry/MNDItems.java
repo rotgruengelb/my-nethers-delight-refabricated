@@ -23,7 +23,9 @@ import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
+//? if <26.3 {
 import net.minecraft.world.item.SignItem;
+//?}
 import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
@@ -213,7 +215,10 @@ public class MNDItems {
 	}
 
 	private static Item signItem(Item.Properties properties, Block standing, Block wall) {
-		//? if >=1.21.11 {
+		//? if >=26.3 {
+
+		//return new StandingAndWallBlockItem(standing, wall, Direction.DOWN, properties);
+		//?} else if >=1.21.11 {
 		//return new SignItem(standing, wall, properties);
 		//?} else {
 		return new SignItem(properties, standing, wall, Direction.DOWN);
@@ -248,9 +253,8 @@ public class MNDItems {
 		ResourceLocation id = MyNethersDelight.id(name);
 
 		//? if >=1.21.11 {
-		/*// 1.21.11 needs the registry key while the item is constructed, because the
-		// display name of an item is resolved from its id.
-		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, id);
+
+		/*ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, id);
 		I item = factory.apply(properties.setId(key));
 		Registry.register(BuiltInRegistries.ITEM, key, item);
 		*///?} else {

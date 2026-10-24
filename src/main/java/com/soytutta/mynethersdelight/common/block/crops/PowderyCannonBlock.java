@@ -3,7 +3,9 @@ package com.soytutta.mynethersdelight.common.block.crops;
 import com.soytutta.mynethersdelight.common.utility.MNDItemResults;
 import com.soytutta.mynethersdelight.common.utility.MNDTools;
 
+//? if <26.3 {
 import com.mojang.serialization.MapCodec;
+//?}
 import com.soytutta.mynethersdelight.common.block.utility.MNDBlockStateProperties;
 import com.soytutta.mynethersdelight.common.tag.MNDTags;
 import com.soytutta.mynethersdelight.common.registry.MNDBlocks;
@@ -25,6 +27,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.block.BambooStalkBlock;
+//? if >=26.3 {
+//import net.minecraft.world.level.block.BonemealSource;
+//?}
 //? if >=1.21.11 {
 //import net.minecraft.world.entity.InsideBlockEffectApplier;
 //?}
@@ -48,9 +53,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-//import net.neoforged.neoforge.common.CommonHooks;
-//import net.neoforged.neoforge.common.Tags;
-//import net.neoforged.neoforge.common.util.TriState;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -58,7 +60,9 @@ import static com.soytutta.mynethersdelight.common.block.utility.MNDBlockStatePr
 
 public class PowderyCannonBlock extends BambooStalkBlock {
 
+    //? if <26.3 {
     public static final MapCodec<PowderyCannonBlock> CODEC = simpleCodec(PowderyCannonBlock::new);
+    //?}
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
     public PowderyCannonBlock(Properties properties) {
@@ -87,7 +91,6 @@ public class PowderyCannonBlock extends BambooStalkBlock {
         return PathType.DAMAGE_OTHER;
     }
 
-	// QPORT TODO
 	protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
 		return level.getBlockState(pos.below()).is(MNDTags.POWDERY_CANNON_PLANTABLE_ON);
 	}
@@ -166,7 +169,6 @@ public class PowderyCannonBlock extends BambooStalkBlock {
     }
     //?}
 
-	// QPORT TODO
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
 		if (!fluidstate.isEmpty()) {

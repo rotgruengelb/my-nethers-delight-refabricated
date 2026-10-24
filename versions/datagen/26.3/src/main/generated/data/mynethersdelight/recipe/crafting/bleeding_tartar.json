@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "mynethersdelight:minced_strider",
+    "mynethersdelight:minced_strider",
+    "#c:eggs",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "mynethersdelight:bleeding_tartar"
+  }
+}

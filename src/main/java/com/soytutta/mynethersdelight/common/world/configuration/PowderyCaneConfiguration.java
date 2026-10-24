@@ -1,9 +1,12 @@
 package com.soytutta.mynethersdelight.common.world.configuration;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.ExtraCodecs;
+//? if <26.3 {
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+//?}
 
 public record PowderyCaneConfiguration(int tries, int xzSpread, int ySpread) implements FeatureConfiguration {
     public static final Codec<PowderyCaneConfiguration> CODEC = RecordCodecBuilder.create(instance -> instance.group(

@@ -24,6 +24,7 @@ stonecutter {
 		fun match(version: String, vararg loaders: String) =
 			loaders.forEach { version("$version-$it", version).buildscript = "build.$it.gradle.kts" }
 
+		match("26.3", "fabric")
 		match("26.2", "fabric")
 		match("26.1.2", "fabric")
 		match("1.21.11", "fabric")

@@ -3,7 +3,9 @@ package com.soytutta.mynethersdelight.common.block.crops;
 import com.soytutta.mynethersdelight.common.utility.MNDItemResults;
 import com.soytutta.mynethersdelight.common.utility.MNDTools;
 
+//? if <26.3 {
 import com.mojang.serialization.MapCodec;
+//?}
 import com.soytutta.mynethersdelight.common.registry.MNDBlocks;
 import com.soytutta.mynethersdelight.common.registry.MNDItems;
 import com.soytutta.mynethersdelight.common.tag.MNDTags;
@@ -41,8 +43,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-//import net.neoforged.neoforge.common.CommonHooks;
-//import net.neoforged.neoforge.common.Tags;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -50,7 +50,9 @@ import static com.soytutta.mynethersdelight.common.block.utility.MNDBlockStatePr
 
 public class PowderyFlowerBlock extends BushBlock implements BonemealableBlock {
 
+    //? if <26.3 {
     public static final MapCodec<PowderyFlowerBlock> CODEC = simpleCodec(PowderyFlowerBlock::new);
+    //?}
     public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
@@ -66,10 +68,12 @@ public class PowderyFlowerBlock extends BushBlock implements BonemealableBlock {
                 (state, world, pos, neighbor) -> getBlockPathType(state, world, pos, null));
     }
 
+    //? if <26.3 {
     @Override
     public MapCodec<BushBlock> codec() {
         return CODEC.xmap(block -> block, block -> (PowderyFlowerBlock) block);
     }
+    //?}
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {

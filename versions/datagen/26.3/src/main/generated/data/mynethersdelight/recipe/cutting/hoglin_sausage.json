@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "mynethersdelight:hoglin_loin"
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 2,
+        "id": "mynethersdelight:hoglin_sausage"
+      }
+    }
+  ],
+  "tool": "#c:tools/knife"
+}

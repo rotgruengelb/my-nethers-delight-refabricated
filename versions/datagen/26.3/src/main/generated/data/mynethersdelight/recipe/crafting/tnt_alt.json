@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "mynethersdelight:powder_cannon",
+    "s": "#minecraft:sand"
+  },
+  "pattern": [
+    "#s#",
+    "s#s",
+    "#s#"
+  ],
+  "result": {
+    "id": "minecraft:tnt"
+  }
+}

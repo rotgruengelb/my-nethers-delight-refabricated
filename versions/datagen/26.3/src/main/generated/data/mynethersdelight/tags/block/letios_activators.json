@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:twisting_vines_plant",
+    "minecraft:weeping_vines_plant",
+    {
+      "id": "#mynethersdelight:showcase_activators",
+      "required": false
+    }
+  ]
+}

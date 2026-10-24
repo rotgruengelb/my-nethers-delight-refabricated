@@ -12,9 +12,9 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 //? if >=26.2 {
-/*/^26.2 merged the block tags and the item tags into one registry of tag ids.^/
-import net.minecraft.tags.BlockItemTags;
-*///?}
+
+//import net.minecraft.tags.BlockItemTags;
+//?}
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
@@ -76,8 +76,8 @@ public class MNDBlockTags extends FabricTagProvider.BlockTagProvider {
 
 		this.tag(BlockTags.MUSHROOM_GROW_BLOCK).add(keyOf(MNDBlocks.LETIOS_COMPOST, MNDBlocks.RESURGENT_SOIL, MNDBlocks.RESURGENT_SOIL_FARMLAND));
 		//? if >=26.1.2 {
-		/*this.tag(BlockTags.GROWS_CROPS).add(keyOf(MNDBlocks.RESURGENT_SOIL, MNDBlocks.RESURGENT_SOIL_FARMLAND));
-		*///?}
+		//this.tag(BlockTags.GROWS_CROPS).add(keyOf(MNDBlocks.RESURGENT_SOIL, MNDBlocks.RESURGENT_SOIL_FARMLAND));
+		//?}
 		this.tag(BlockTags.SMALL_FLOWERS).add(keyOf(MNDBlocks.BULLET_PEPPER));
 		this.tag(BlockTags.FENCES).add(keyOf(MNDBlocks.POWDERY_FENCE));
 	}

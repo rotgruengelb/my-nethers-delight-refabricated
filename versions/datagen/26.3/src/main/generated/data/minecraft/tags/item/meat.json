@@ -1,0 +1,14 @@
+{
+  "values": [
+    {
+      "id": "#c:foods/raw_hoglin",
+      "required": false
+    },
+    {
+      "id": "#c:foods/cooked_hoglin",
+      "required": false
+    },
+    "mynethersdelight:minced_strider",
+    "mynethersdelight:roast_ear"
+  ]
+}

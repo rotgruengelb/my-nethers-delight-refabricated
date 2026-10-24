@@ -7,7 +7,9 @@ import com.soytutta.mynethersdelight.common.utility.MNDTools;
 
 import org.jetbrains.annotations.Nullable;
 
+//? if <26.3 {
 import com.mojang.serialization.MapCodec;
+//?}
 import com.soytutta.mynethersdelight.common.utility.MNDTextUtils;
 import com.soytutta.mynethersdelight.common.registry.MNDItems;
 import net.minecraft.core.BlockPos;
@@ -15,6 +17,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+//? if >=26.3 {
+//import net.minecraft.util.Prediction;
+//?}
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -47,7 +52,9 @@ import java.util.List;
 
 // thanks Umpaz for letting me use this code <3
 public class StuffedHoglinBlock extends HorizontalDirectionalBlock {
+    //? if <26.3 {
     public static final MapCodec<StuffedHoglinBlock> CODEC = simpleCodec(StuffedHoglinBlock::new);
+    //?}
 
     public static final EnumProperty<BedPart> PART = BlockStateProperties.BED_PART;
     public static final IntegerProperty SERVINGS = IntegerProperty.create("servings", 0, 11);
@@ -66,10 +73,12 @@ public class StuffedHoglinBlock extends HorizontalDirectionalBlock {
         this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(SERVINGS, 11).setValue(PART, BedPart.HEAD));
     }
 
+    //? if <26.3 {
     @Override
     protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return CODEC;
     }
+    //?}
 
     public IntegerProperty getServingsProperty() {
         return SERVINGS;

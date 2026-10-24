@@ -1,0 +1,155 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "pool1",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "mynethersdelight:warped_fungus_colony",
+                "state": {
+                  "age": "0"
+                }
+              },
+              "modifier": {
+                "type": "minecraft:set_count",
+                "count": 2
+              },
+              "name": "minecraft:warped_fungus"
+            },
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "mynethersdelight:warped_fungus_colony",
+                "state": {
+                  "age": "1"
+                }
+              },
+              "modifier": {
+                "type": "minecraft:set_count",
+                "count": 3
+              },
+              "name": "minecraft:warped_fungus"
+            },
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "mynethersdelight:warped_fungus_colony",
+                "state": {
+                  "age": "2"
+                }
+              },
+              "modifier": {
+                "type": "minecraft:set_count",
+                "count": 4
+              },
+              "name": "minecraft:warped_fungus"
+            },
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:all_of",
+                "terms": [
+                  {
+                    "type": "minecraft:match_block",
+                    "blocks": "mynethersdelight:warped_fungus_colony",
+                    "state": {
+                      "age": "3"
+                    }
+                  },
+                  {
+                    "type": "minecraft:inverted",
+                    "term": {
+                      "type": "minecraft:any_of",
+                      "terms": [
+                        {
+                          "type": "minecraft:match_tool",
+                          "predicate": {
+                            "items": "#c:tools/shear"
+                          }
+                        },
+                        {
+                          "type": "minecraft:match_tool",
+                          "predicate": {
+                            "predicates": {
+                              "minecraft:enchantments": [
+                                {
+                                  "enchantments": "minecraft:silk_touch",
+                                  "levels": {
+                                    "min": 1
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "modifier": {
+                "type": "minecraft:set_count",
+                "count": 5
+              },
+              "name": "minecraft:warped_fungus"
+            },
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:all_of",
+                "terms": [
+                  {
+                    "type": "minecraft:match_block",
+                    "blocks": "mynethersdelight:warped_fungus_colony",
+                    "state": {
+                      "age": "3"
+                    }
+                  },
+                  {
+                    "type": "minecraft:any_of",
+                    "terms": [
+                      {
+                        "type": "minecraft:match_tool",
+                        "predicate": {
+                          "items": "#c:tools/shear"
+                        }
+                      },
+                      {
+                        "type": "minecraft:match_tool",
+                        "predicate": {
+                          "predicates": {
+                            "minecraft:enchantments": [
+                              {
+                                "enchantments": "minecraft:silk_touch",
+                                "levels": {
+                                  "min": 1
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "name": "mynethersdelight:warped_fungus_colony"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modifier": {
+    "type": "minecraft:explosion_decay"
+  }
+}

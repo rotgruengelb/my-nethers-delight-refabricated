@@ -32,9 +32,9 @@ public class BlazierTemperatureRecipeExtension
         List<SlotDisplay> displays = new ArrayList<>();
         for (ItemStack stack : ingredientStacks(recipeHolder.value())) {
             //? if >=26.1.2 {
-            /^//26.1 asks the slot display for an item stack template instead of an item stack.
-            displays.add(new SlotDisplay.ItemStackSlotDisplay(ItemStackTemplate.fromNonEmptyStack(stack)));
-            ^///?} else {
+            
+            //displays.add(new SlotDisplay.ItemStackSlotDisplay(ItemStackTemplate.fromNonEmptyStack(stack)));
+            //?} else {
             displays.add(new SlotDisplay.ItemStackSlotDisplay(stack));
             //?}
         }

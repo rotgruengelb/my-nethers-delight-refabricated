@@ -1,0 +1,29 @@
+{
+  "values": [
+    "minecraft:lava_cauldron",
+    "mynethersdelight:powdery_cane",
+    "mynethersdelight:powdery_cannon",
+    "mynethersdelight:bullet_pepper",
+    "mynethersdelight:ghasta_with_cream_block",
+    "mynethersdelight:potted_bullet_pepper",
+    "mynethersdelight:wall_powdery_torch",
+    "minecraft:wall_torch",
+    {
+      "id": "#mynethersdelight:showcase_flames",
+      "required": false
+    },
+    {
+      "id": "#farmersdelight:heat_sources",
+      "required": false
+    },
+    {
+      "id": "#minecraft:candle_cakes",
+      "required": false
+    },
+    {
+      "id": "#minecraft:fire",
+      "required": false
+    },
+    "minecraft:lava"
+  ]
+}

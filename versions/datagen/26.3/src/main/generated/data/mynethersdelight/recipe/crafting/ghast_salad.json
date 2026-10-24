@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:foods/raw_ghast",
+    {
+      "fabric:type": "fabric:difference",
+      "base": "#c:foods/vegetable",
+      "subtracted": "minecraft:melon_slice"
+    },
+    "#c:crops/carrot",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "mynethersdelight:ghast_salad"
+  }
+}

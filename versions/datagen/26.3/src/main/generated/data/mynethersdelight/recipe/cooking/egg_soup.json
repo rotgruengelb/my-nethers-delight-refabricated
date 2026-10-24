@@ -1,0 +1,14 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 1.0,
+  "ingredients": [
+    "#c:foods/boiled_egg",
+    "#c:foods/cooked_egg",
+    "#c:foods/cooked_egg",
+    "#c:foods/onion"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "mynethersdelight:egg_soup"
+  }
+}

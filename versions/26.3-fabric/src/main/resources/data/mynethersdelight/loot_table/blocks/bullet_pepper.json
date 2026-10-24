@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mynethersdelight:bullet_pepper",
+          "condition": {
+            "type": "minecraft:all_of",
+            "terms": [
+              {
+                "type": "minecraft:match_block",
+                "blocks": "mynethersdelight:bullet_pepper",
+                "state": {
+                  "lit": "true"
+                }
+              },
+              {
+                "type": "minecraft:survives_explosion"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

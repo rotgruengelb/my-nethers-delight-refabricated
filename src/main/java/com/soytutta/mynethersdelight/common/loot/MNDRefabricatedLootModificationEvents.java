@@ -25,6 +25,10 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 //?}
 import net.minecraft.core.HolderLookup;
+//? if >=26.3 {
+/*import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
+*///?}
 import com.soytutta.mynethersdelight.common.tag.MNDModTags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -45,8 +49,13 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.AllOfCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
+//? if <26.3 {
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+//?} else {
+//import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+//?}
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithEnchantedBonusCondition;
@@ -74,33 +83,49 @@ public class MNDRefabricatedLootModificationEvents {
 	private static void modifyTable(ResourceKey<LootTable> key, LootTable.Builder tableBuilder, LootTableSource source, HolderLookup.Provider registries) {
 		if (!source.isBuiltin())
 			return;
-		chestLoot(key, tableBuilder);
+		chestLoot(key, tableBuilder, registries);
 		replaceLoot(key, tableBuilder);
 		scavengingLoot(key, tableBuilder, registries);
 		slicingLoot(key, tableBuilder, registries);
-		piglinBarteringFood(key, tableBuilder);
+		piglinBarteringFood(key, tableBuilder, registries);
 	}
 
-	private static void piglinBarteringFood(ResourceKey<LootTable> key, LootTable.Builder tableBuilder) {
+	private static void piglinBarteringFood(ResourceKey<LootTable> key, LootTable.Builder tableBuilder, HolderLookup.Provider registries) {
 		if (key != BuiltInLootTables.PIGLIN_BARTERING) return;
 		if (!MNDConfiguration.enablePiglinFoodTrades()) return;
 
 		float foodChance = (float) MNDConfiguration.piglinFoodTradeChance();
 		float lootChance = Math.max(0.0f, 1.0f - foodChance);
 
+		//? if >=26.3 {
+		/*Holder<LootTable> foodBarter = lootTable(registries, MND_PIGLIN_FOOD_BARTER);
+		Holder<LootTable> defaultBarter = lootTable(registries, MND_PIGLIN_DEFAULT_BARTER);
+		*///?} else {
+		ResourceKey<LootTable> foodBarter = MND_PIGLIN_FOOD_BARTER;
+		ResourceKey<LootTable> defaultBarter = MND_PIGLIN_DEFAULT_BARTER;
+		//?}
+
 		tableBuilder.withPool(LootPool.lootPool()
-				.add(NestedLootTable.lootTableReference(MND_PIGLIN_FOOD_BARTER))
+				.add(NestedLootTable.lootTableReference(foodBarter))
 				.when(LootItemRandomChanceCondition.randomChance(foodChance)));
 		tableBuilder.withPool(LootPool.lootPool()
-				.add(NestedLootTable.lootTableReference(MND_PIGLIN_DEFAULT_BARTER))
+				.add(NestedLootTable.lootTableReference(defaultBarter))
 				.when(LootItemRandomChanceCondition.randomChance(lootChance)));
 	}
 
-	private static void chestLoot(ResourceKey<LootTable> key, LootTable.Builder tableBuilder) {
+	private static void chestLoot(ResourceKey<LootTable> key, LootTable.Builder tableBuilder, HolderLookup.Provider registries) {
+		//? if >=26.3 {
+		/*Holder<LootTable> hoglinStable = lootTable(registries, MND_BASTION_HOGLIN_STABLE);
+		Holder<LootTable> treasure = lootTable(registries, MND_BASTION_TREASURE);
+		*///?} else {
+		ResourceKey<LootTable> hoglinStable = MND_BASTION_HOGLIN_STABLE;
+		ResourceKey<LootTable> treasure = MND_BASTION_TREASURE;
+		//?}
+
 		if (key == BuiltInLootTables.BASTION_HOGLIN_STABLE)
-			tableBuilder.withPool(LootPool.lootPool().add(NestedLootTable.lootTableReference(MND_BASTION_HOGLIN_STABLE)));
+			tableBuilder.withPool(LootPool.lootPool().add(NestedLootTable.lootTableReference(hoglinStable)));
 		if (key == BuiltInLootTables.BASTION_TREASURE)
-			tableBuilder.withPool(LootPool.lootPool().add(NestedLootTable.lootTableReference(MND_BASTION_TREASURE)));
+			tableBuilder.withPool(LootPool.lootPool().add(NestedLootTable.lootTableReference(treasure)));
 	}
 
 	private static void replaceLoot(ResourceKey<LootTable> key, LootTable.Builder tableBuilder) {
@@ -119,8 +144,13 @@ public class MNDRefabricatedLootModificationEvents {
 			LootPool.Builder newPool = LootPool.lootPool();
 			newPool.setRolls(oldLootPool.rolls);
 			newPool.setBonusRolls(oldLootPool.bonusRolls);
+			//? if >=26.3 {
+			/*oldLootPool.condition.ifPresent(newPool::when);
+			oldLootPool.modifier.ifPresent(newPool::apply);
+			*///?} else {
 			newPool.conditionally(oldLootPool.conditions);
 			newPool.apply(oldLootPool.functions);
+			//?}
 			for (LootPoolEntryContainer container : oldLootPool.entries) {
 				if (container instanceof LootItem && container instanceof LootItemAccessor accessor &&
 						items.containsKey(accessor.mynethersdelightrefabricated$getItem().value())) {
@@ -239,15 +269,23 @@ public class MNDRefabricatedLootModificationEvents {
 			for (int bites : MagmaCakeBlock.BITES.getPossibleValues()) {
 				for (boolean second : MagmaCakeBlock.SECOND_CAKE.getPossibleValues()) {
 					int amount = (second ? 14 : 7) - bites;
+					//? if >=26.3 {
+					/*LootItemCondition.Builder cakeState = MatchBlock.blockMatches(registries.lookupOrThrow(Registries.BLOCK), MNDBlocks.MAGMA_CAKE_BLOCK,
+							StatePropertiesPredicate.Builder.properties()
+									.hasProperty(MagmaCakeBlock.BITES, bites)
+									.hasProperty(MagmaCakeBlock.SECOND_CAKE, second));
+					*///?} else {
+					LootItemCondition.Builder cakeState = LootItemBlockStatePropertyCondition.hasBlockStateProperties(MNDBlocks.MAGMA_CAKE_BLOCK)
+							.setProperties(StatePropertiesPredicate.Builder.properties()
+									.hasProperty(MagmaCakeBlock.BITES, bites)
+									.hasProperty(MagmaCakeBlock.SECOND_CAKE, second));
+					//?}
 					tableBuilder.withPool(LootPool.lootPool()
 							.add(LootItem.lootTableItem(MNDItems.MAGMA_CAKE_SLICE)
 									.apply(SetItemCountFunction.setCount(ConstantValue.exactly(amount))))
 							.when(AllOfCondition.allOf(
 									MatchTool.toolMatches(knife),
-									LootItemBlockStatePropertyCondition.hasBlockStateProperties(MNDBlocks.MAGMA_CAKE_BLOCK)
-											.setProperties(StatePropertiesPredicate.Builder.properties()
-													.hasProperty(MagmaCakeBlock.BITES, bites)
-													.hasProperty(MagmaCakeBlock.SECOND_CAKE, second)))));
+									cakeState)));
 				}
 			}
 		}
@@ -260,12 +298,18 @@ public class MNDRefabricatedLootModificationEvents {
 		ItemPredicate.Builder knife = knifePredicate(registries);
 		tableBuilder.modifyPools(builder -> builder.when(InvertedLootItemCondition.invert(MatchTool.toolMatches(knife))));
 		for (int value : property.getPossibleValues()) {
+			//? if >=26.3 {
+			/*LootItemCondition.Builder blockState = MatchBlock.blockMatches(registries.lookupOrThrow(Registries.BLOCK), block,
+					StatePropertiesPredicate.Builder.properties().hasProperty(property, value));
+			*///?} else {
+			LootItemCondition.Builder blockState = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+					.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(property, value));
+			//?}
 			tableBuilder.withPool(LootPool.lootPool()
 					.add(LootItem.lootTableItem(slice).apply(SetItemCountFunction.setCount(ConstantValue.exactly(maxValue - value))))
 					.when(AllOfCondition.allOf(
 							MatchTool.toolMatches(knife),
-							LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-									.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(property, value)))));
+							blockState)));
 		}
 	}
 
@@ -274,6 +318,13 @@ public class MNDRefabricatedLootModificationEvents {
 	private static ResourceKey<LootTable> vanillaKey(String path) {
 		return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.withDefaultNamespace(path));
 	}
+
+	//? if >=26.3 {
+	
+	/*private static Holder<LootTable> lootTable(HolderLookup.Provider registries, ResourceKey<LootTable> key) {
+		return registries.lookupOrThrow(Registries.LOOT_TABLE).getOrThrow(key);
+	}
+	*///?}
 
 	private static ResourceKey<LootTable> key(String path) {
 		return ResourceKey.create(Registries.LOOT_TABLE, MyNethersDelight.id(path));

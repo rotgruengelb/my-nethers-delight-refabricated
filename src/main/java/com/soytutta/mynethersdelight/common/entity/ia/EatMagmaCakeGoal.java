@@ -237,10 +237,29 @@ public class EatMagmaCakeGoal extends Goal {
     }
 
     private BlockPos findNearbyCake() {
+        //? if >=26.3 {
+        
+        /*BlockPos origin = this.frog.blockPosition();
+        BlockPos closest = null;
+        double closestDistance = Double.MAX_VALUE;
+
+        for (BlockPos pos : BlockPos.withinManhattan(origin, CAKE_SEARCH_RADIUS)) {
+            if (this.level.getBlockState(pos).getBlock() instanceof MagmaCakeBlock) {
+                double distance = pos.distSqr(origin);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closest = pos.immutable();
+                }
+            }
+        }
+
+        return closest;
+        *///?} else {
         return BlockPos.findClosestMatch(this.frog.blockPosition(), CAKE_SEARCH_RADIUS, CAKE_SEARCH_RADIUS,
                         pos -> this.level.getBlockState(pos).getBlock() instanceof MagmaCakeBlock)
                 .map(BlockPos::immutable)
                 .orElse(null);
+        //?}
     }
 
     public boolean requestFeeding(Player player, InteractionHand hand) {

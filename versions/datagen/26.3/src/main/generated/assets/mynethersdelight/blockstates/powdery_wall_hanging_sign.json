@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mynethersdelight:block/powdery_wall_hanging_sign",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "mynethersdelight:block/powdery_wall_hanging_sign",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "mynethersdelight:block/powdery_wall_hanging_sign"
+    },
+    "facing=west": {
+      "model": "mynethersdelight:block/powdery_wall_hanging_sign",
+      "y": 90
+    }
+  }
+}

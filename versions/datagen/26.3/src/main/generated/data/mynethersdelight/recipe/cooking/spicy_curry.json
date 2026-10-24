@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 1.0,
+  "ingredients": [
+    "#c:foods/raw_meat",
+    "#c:drinks/milk",
+    "#mynethersdelight:hot_spice",
+    "#c:crops/rice",
+    {
+      "fabric:type": "fabric:difference",
+      "base": "#c:foods/vegetable",
+      "subtracted": "minecraft:melon_slice"
+    },
+    [
+      "minecraft:pumpkin",
+      "farmersdelight:pumpkin_slice"
+    ]
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "mynethersdelight:spicy_curry"
+  }
+}

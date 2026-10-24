@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:cactus",
+    {
+      "id": "#mynethersdelight:above_propagate_plant",
+      "required": false
+    },
+    {
+      "id": "#mynethersdelight:below_propagate_plant",
+      "required": false
+    }
+  ]
+}

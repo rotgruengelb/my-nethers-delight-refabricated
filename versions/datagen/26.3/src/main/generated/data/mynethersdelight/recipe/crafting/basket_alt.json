@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "farmersdelight:canvas",
+    "B": [
+      "mynethersdelight:powder_cannon",
+      "minecraft:bamboo"
+    ],
+    "b": [
+      "minecraft:bamboo",
+      "mynethersdelight:powder_cannon"
+    ]
+  },
+  "pattern": [
+    "B b",
+    "# #",
+    "b#B"
+  ],
+  "result": {
+    "id": "farmersdelight:bamboo_basket"
+  }
+}

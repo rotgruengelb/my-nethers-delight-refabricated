@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "mynethersdelight:strider_slice",
+    "mynethersdelight:minced_strider",
+    "mynethersdelight:minced_strider",
+    "mynethersdelight:minced_strider",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "mynethersdelight:striderloaf"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "mynethersdelight:bullet_pepper",
+    "#c:foods/cooked_pork",
+    "#c:drinks/milk"
+  ],
+  "result": {
+    "id": "mynethersdelight:stuffed_pepper"
+  }
+}

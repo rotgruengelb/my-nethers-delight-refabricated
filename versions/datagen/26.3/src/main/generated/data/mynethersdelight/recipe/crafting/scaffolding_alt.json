@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": [
+      "farmersdelight:canvas",
+      "minecraft:string"
+    ],
+    "B": [
+      "mynethersdelight:powder_cannon",
+      "minecraft:bamboo"
+    ],
+    "b": [
+      "minecraft:bamboo",
+      "mynethersdelight:powder_cannon"
+    ]
+  },
+  "pattern": [
+    "B#b",
+    "B b",
+    "B b"
+  ],
+  "result": {
+    "count": 6,
+    "id": "minecraft:scaffolding"
+  }
+}

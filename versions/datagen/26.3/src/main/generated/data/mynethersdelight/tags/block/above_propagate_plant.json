@@ -1,0 +1,16 @@
+{
+  "values": [
+    "minecraft:kelp",
+    "minecraft:lily_pad",
+    "minecraft:dead_bush",
+    "minecraft:glow_lichen",
+    {
+      "id": "#minecraft:saplings",
+      "required": false
+    },
+    {
+      "id": "#minecraft:crops",
+      "required": false
+    }
+  ]
+}

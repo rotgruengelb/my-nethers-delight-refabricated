@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "mynethersdelight:hoglin_hide",
+    "c": "mynethersdelight:crimson_fungus_colony",
+    "h": "farmersdelight:ham",
+    "l": "mynethersdelight:hoglin_loin",
+    "w": "mynethersdelight:warped_fungus_colony"
+  },
+  "pattern": [
+    "hwh",
+    "l#l",
+    "hch"
+  ],
+  "result": {
+    "id": "mynethersdelight:raw_stuffed_hoglin"
+  }
+}

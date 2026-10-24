@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:sequence",
+            "functions": [
+              {
+                "type": "minecraft:set_count",
+                "add": false,
+                "condition": {
+                  "type": "minecraft:match_block",
+                  "blocks": "mynethersdelight:powdery_slab",
+                  "state": {
+                    "type": "double"
+                  }
+                },
+                "count": 2
+              },
+              {
+                "type": "minecraft:explosion_decay"
+              }
+            ]
+          },
+          "name": "mynethersdelight:powdery_slab"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

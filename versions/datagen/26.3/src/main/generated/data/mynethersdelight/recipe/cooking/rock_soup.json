@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 50,
+  "experience": 0.35,
+  "ingredients": [
+    "minecraft:magma_cream",
+    "minecraft:magma_cream",
+    [
+      "mynethersdelight:strider_rock",
+      "mynethersdelight:strider_egg"
+    ],
+    [
+      "mynethersdelight:strider_rock",
+      "mynethersdelight:strider_egg"
+    ]
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "mynethersdelight:rock_soup"
+  }
+}
