@@ -4,7 +4,7 @@ name = "My Nether's Delight Refabricated"
 group = "com.soytutta"
 # {port:major.minor.fix}-{base:major.minor.fix (without last)}
 version = "3.0.0-1.10.4"
-channel_tag = "-alpha.3"
+channel_tag = "-beta.1"
 description = "A nether expansion for the Farmer's Delight mod!"
 authors = ["rotgruengelb", "SoyTutta"]
 contributors = ["Mpustovoi", "Unroman", "ChuijkYahus", "SlimeSB", "RaymondBlaze", "TCGhost", "Sarinsa", "Umpaz", "SoyTutta", "rotgruengelb", "MerchantCalico", "cassiancc"]
