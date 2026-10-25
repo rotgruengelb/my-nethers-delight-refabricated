@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/template_torch",
+  "parent": "mynethersdelight:block/template_torch",
   "render_type": "minecraft:cutout",
   "textures": {
     "torch": "mynethersdelight:block/powdery_torch"
