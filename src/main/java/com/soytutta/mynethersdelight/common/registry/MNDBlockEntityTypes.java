@@ -17,7 +17,8 @@ import vectorwing.farmersdelight.common.registry.ModBlockEntityTypes;
 public class MNDBlockEntityTypes {
 
 	public static final BlockEntityType<MNDSignBlockEntity> MND_SIGN = register("mnd_sign", FabricBlockEntityTypeBuilder.create(MNDSignBlockEntity::new, MNDBlocks.POWDERY_SIGN, MNDBlocks.POWDERY_WALL_SIGN).build());
-	public static final BlockEntityType<MNDHangingSignBlockEntity> MND_HSIGN = register("mnd_hsign", FabricBlockEntityTypeBuilder.create(MNDHangingSignBlockEntity::new, MNDBlocks.POWDERY_HANGING_SIGN, MNDBlocks.POWDERY_WALL_HANGING_SIGN).build());	//? if <1.21.11 {
+	public static final BlockEntityType<MNDHangingSignBlockEntity> MND_HSIGN = register("mnd_hsign", FabricBlockEntityTypeBuilder.create(MNDHangingSignBlockEntity::new, MNDBlocks.POWDERY_HANGING_SIGN, MNDBlocks.POWDERY_WALL_HANGING_SIGN).build());
+	//? if <1.21.11 {
 	public static final BlockEntityType<NetherStoveBlockEntity> NETHER_STOVE = register("nether_stove", FabricBlockEntityTypeBuilder.create(NetherStoveBlockEntity::new, MNDBlocks.NETHER_STOVE).build());
 	//?}
 
