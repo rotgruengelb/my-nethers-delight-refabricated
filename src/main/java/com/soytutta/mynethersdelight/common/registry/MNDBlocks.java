@@ -1,7 +1,5 @@
 package com.soytutta.mynethersdelight.common.registry;
 
-import net.minecraft.resources.ResourceKey;
-
 import com.soytutta.mynethersdelight.MyNethersDelight;
 import com.soytutta.mynethersdelight.common.block.BlazierBlock;
 import com.soytutta.mynethersdelight.common.block.LetiosCompostBlock;
@@ -29,7 +27,6 @@ import com.soytutta.mynethersdelight.common.block.utility.MNDWoodTypes;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -78,7 +75,7 @@ public class MNDBlocks {
 	public static final Block BULLET_PEPPER_CRATE = register("bullet_pepper_crate", Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.FIRE).strength(2.0F, 3.0F).sound(SoundType.BAMBOO_WOOD).lightLevel((light) -> 15), PepperCrateBlock::new);
 	public static final Block LETIOS_COMPOST = register("letios_compost", Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.COLOR_BROWN).strength(1.2F).speedFactor(0.4F), LetiosCompostBlock::new);
 	public static final Block RESURGENT_SOIL = register("resurgent_soil", Properties.ofFullCopy(Blocks.SOUL_SOIL).sound(SoundType.SOUL_SAND).mapColor(MapColor.COLOR_BROWN).speedFactor(0.4F).randomTicks(), ResurgentSoilBlock::new);
-	public static final Block RESURGENT_SOIL_FARMLAND = register("resurgent_soil_farmland", Properties.ofFullCopy(Blocks.FARMLAND).sound(SoundType.SOUL_SAND).mapColor(MapColor.COLOR_BROWN).speedFactor(0.4F).lightLevel(FlameBlockEmission(10)), ResurgentSoilFarmlandBlock::new);
+	public static final Block RESURGENT_SOIL_FARMLAND = register("resurgent_soil_farmland", Properties.ofFullCopy(Blocks.FARMLAND).sound(SoundType.SOUL_SAND).mapColor(MapColor.COLOR_BROWN).speedFactor(0.4F).lightLevel(flameBlockEmission(10)), ResurgentSoilFarmlandBlock::new);
 	public static final Block WARPED_FUNGUS_COLONY = register("warped_fungus_colony", Properties.ofFullCopy(Blocks.BROWN_MUSHROOM).sound(SoundType.FUNGUS), p -> new MushroomColonyBlock(Items.WARPED_FUNGUS.builtInRegistryHolder(), p));
 	public static final Block CRIMSON_FUNGUS_COLONY = register("crimson_fungus_colony", Properties.ofFullCopy(Blocks.RED_MUSHROOM).sound(SoundType.FUNGUS), p -> new MushroomColonyBlock(Items.CRIMSON_FUNGUS.builtInRegistryHolder(), p));
 	public static final Block POWDERY_CHUBBY_SAPLING = register("powdery_chubby_sapling", Properties.ofFullCopy(Blocks.BAMBOO_SAPLING).mapColor(MapColor.TERRACOTTA_BLACK).strength(2.0F, 15.0F).sound(SoundType.BAMBOO_SAPLING), PowderyCannonSaplingBlock::new);
@@ -141,7 +138,7 @@ public class MNDBlocks {
 		//?}
 	}
 
-	private static ToIntFunction<BlockState> FlameBlockEmission(int lightValue) {
+	private static ToIntFunction<BlockState> flameBlockEmission(int lightValue) {
 		return (state) -> state.getValue(BlockStateProperties.MOISTURE) == 7 ? lightValue : 0;
 	}
 
