@@ -4,14 +4,27 @@ import com.soytutta.mynethersdelight.common.registry.MNDBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.HangingSignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
-public class MNDHangingSignBlockEntity extends SignBlockEntity {
+public class MNDHangingSignBlockEntity extends HangingSignBlockEntity {
 
     public MNDHangingSignBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
-        super(MNDBlockEntityTypes.MND_HSIGN, pWorldPosition, pBlockState);
-    }
+        super(pWorldPosition, pBlockState);
+	}
+
+	@NotNull
+	@Override
+	public BlockEntityType<?> getType() {
+		return MNDBlockEntityTypes.MND_HSIGN;
+	}
+
+	@Override
+	public boolean isValidBlockState(BlockState blockState) {
+		return this.getType().isValid(blockState);
+	}
 
     @Override
     public int getTextLineHeight() {
