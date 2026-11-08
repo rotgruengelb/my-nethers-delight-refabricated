@@ -102,8 +102,11 @@ public class MNDBlockTags extends FabricTagProvider.BlockTagProvider {
 		this.getOrCreateTagBuilder(MNDTags.ABOVE_PROPAGATE_PLANT).add(keyOf(Blocks.KELP, Blocks.LILY_PAD, Blocks.DEAD_BUSH, Blocks.GLOW_LICHEN)).forceAddTag(BlockTags.SAPLINGS).forceAddTag(BlockTags.CROPS);
 		//?}
 
-		this.tag(MNDTags.RESURGENT_SOIL_PLANT).add(keyOf(Blocks.CACTUS))
-				.addTag(MNDTags.ABOVE_PROPAGATE_PLANT).addTag(MNDTags.BELOW_PROPAGATE_PLANT);
+		//? if >=1.21.11 {
+		//this.tag(MNDTags.RESURGENT_SOIL_PLANT).add(keyOf(Blocks.CACTUS)).addTag(MNDTags.ABOVE_PROPAGATE_PLANT).addTag(MNDTags.BELOW_PROPAGATE_PLANT).addTag(BlockTags.MINEABLE_WITH_HOE).addTag(BlockTags.SWORD_EFFICIENT);
+		//?} else {
+		this.getOrCreateTagBuilder(MNDTags.RESURGENT_SOIL_PLANT).add(keyOf(Blocks.CACTUS)).addTag(MNDTags.ABOVE_PROPAGATE_PLANT).addTag(MNDTags.BELOW_PROPAGATE_PLANT).forceAddTag(BlockTags.MINEABLE_WITH_HOE).forceAddTag(BlockTags.SWORD_EFFICIENT);
+		//?}
 
 		this.tag(MNDModTags.CABINETS_BLOCK).add(keyOf(MNDBlocks.NETHER_BRICKS_CABINET, MNDBlocks.RED_NETHER_BRICKS_CABINET, MNDBlocks.BLACKSTONE_BRICKS_CABINET));
 		this.tag(MNDModTags.WOODEN_CABINETS_BLOCK).add(keyOf(MNDBlocks.POWDERY_CABINET));

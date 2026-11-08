@@ -1,0 +1,40 @@
+{
+  "rules": [
+    {
+      "chance": 0.06666666666666667,
+      "chance_mode": "rich_soil_multiplier",
+      "direction": "above",
+      "soil": "resurgent_soil",
+      "conditions": [
+        {
+          "type": "air",
+          "offset": [0, 1, 0]
+        }
+      ],
+      "action": {
+        "type": "place_blocks",
+        "blocks": [
+          {
+            "offset": [0, 0, 0],
+            "state": {
+              "block": "mynethersdelight:powdery_cane",
+              "properties": {
+                "age": "1"
+              }
+            }
+          },
+          {
+            "offset": [0, 1, 0],
+            "state": {
+              "block": "mynethersdelight:bullet_pepper",
+              "properties": {
+                "age": "2",
+                "lit": "true"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

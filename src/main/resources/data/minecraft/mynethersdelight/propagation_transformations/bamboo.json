@@ -1,0 +1,16 @@
+{
+  "rules": [
+    {
+      "chance": 0.2,
+      "chance_mode": "rich_soil_multiplier",
+      "direction": "above",
+      "soil": "resurgent_soil",
+      "action": {
+        "type": "propagate",
+        "result": {
+          "block": "minecraft:bamboo_sapling"
+        }
+      }
+    }
+  ]
+}

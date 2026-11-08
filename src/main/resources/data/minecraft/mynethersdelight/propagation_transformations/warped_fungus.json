@@ -1,0 +1,16 @@
+{
+  "rules": [
+    {
+      "chance": 1.0,
+      "chance_mode": "absolute",
+      "direction": "above",
+      "soil": "resurgent_soil",
+      "action": {
+        "type": "replace",
+        "result": {
+          "block": "mynethersdelight:warped_fungus_colony"
+        }
+      }
+    }
+  ]
+}

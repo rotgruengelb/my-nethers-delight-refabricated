@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "chance": 0.3333333333333333,
+      "chance_mode": "rich_soil_multiplier",
+      "direction": "above",
+      "soil": "resurgent_farmland",
+      "action": {
+        "type": "propagate",
+        "result": {
+          "block": "farmersdelight:tomatoes"
+        }
+      }
+    },
+    {
+      "chance": 1.0,
+      "chance_mode": "absolute",
+      "direction": "above",
+      "soil": "resurgent_farmland",
+      "action": {
+        "type": "propagate",
+        "result": {
+          "block": "farmersdelight:budding_tomatoes"
+        }
+      }
+    }
+  ]
+}
