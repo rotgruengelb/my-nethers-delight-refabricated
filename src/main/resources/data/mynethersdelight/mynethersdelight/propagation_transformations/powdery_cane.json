@@ -1,0 +1,16 @@
+{
+  "rules": [
+    {
+      "chance": 0.4,
+      "chance_mode": "rich_soil_multiplier",
+      "direction": "above",
+      "soil": "resurgent_soil",
+      "action": {
+        "type": "propagate",
+        "result": {
+          "block": "mynethersdelight:bullet_pepper"
+        }
+      }
+    }
+  ]
+}

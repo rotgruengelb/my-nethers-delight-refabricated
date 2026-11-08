@@ -158,8 +158,6 @@ stonecutter {
 		replace("MobEffects.MOVEMENT_SPEED", "MobEffects.SPEED")
 		replace("net.minecraft.world.level.block.PinkPetalsBlock", "net.minecraft.world.level.block.FlowerBedBlock")
 		replace("instanceof PinkPetalsBlock", "instanceof FlowerBedBlock")
-		replace("instanceof TomatoBlock", "instanceof BuddingTomatoBlock")
-		replace("vectorwing.farmersdelight.common.block.TomatoBlock", "vectorwing.farmersdelight.common.block.BuddingTomatoBlock")
 		replace("vectorwing.farmersdelight.common.block.AbstractStoveBlock", "vectorwing.farmersdelight.common.block.StoveBlock")
 		replace("extends AbstractStoveBlock", "extends StoveBlock")
 		replace("extends AbstractStoveBlockEntity", "extends StoveBlockEntity")
@@ -182,6 +180,8 @@ stonecutter {
 	}
 	replacements.string(current.parsed >= "1.21.11" && current.parsed < "26.1.2") {
 		replace("DefaultStoveRenderer", "StoveRenderer")
+		replace("instanceof TomatoBlock", "instanceof TomatoVineBlock")
+		replace("vectorwing.farmersdelight.common.block.TomatoBlock", "vectorwing.farmersdelight.common.block.TomatoVineBlock")
 	}
 	replacements.string(current.parsed >= "26.1.2") {
 		replace("FabricDataOutput", "FabricPackOutput")

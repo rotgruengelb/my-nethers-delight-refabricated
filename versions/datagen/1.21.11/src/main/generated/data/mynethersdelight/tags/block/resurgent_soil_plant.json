@@ -8,6 +8,14 @@
     {
       "id": "#mynethersdelight:below_propagate_plant",
       "required": false
+    },
+    {
+      "id": "#minecraft:mineable/hoe",
+      "required": false
+    },
+    {
+      "id": "#minecraft:sword_efficient",
+      "required": false
     }
   ]
 }
