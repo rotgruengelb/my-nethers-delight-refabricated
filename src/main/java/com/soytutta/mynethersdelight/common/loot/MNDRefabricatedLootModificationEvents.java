@@ -81,7 +81,7 @@ public class MNDRefabricatedLootModificationEvents {
 	}
 
 	private static void modifyTable(ResourceKey<LootTable> key, LootTable.Builder tableBuilder, LootTableSource source, HolderLookup.Provider registries) {
-		if (!source.isBuiltin())
+		if (!source.isBuiltin() && !MNDConfiguration.enableForceInjectLoot())
 			return;
 		chestLoot(key, tableBuilder, registries);
 		replaceLoot(key, tableBuilder);
@@ -320,7 +320,7 @@ public class MNDRefabricatedLootModificationEvents {
 	}
 
 	//? if >=26.3 {
-	
+
 	/*private static Holder<LootTable> lootTable(HolderLookup.Provider registries, ResourceKey<LootTable> key) {
 		return registries.lookupOrThrow(Registries.LOOT_TABLE).getOrThrow(key);
 	}
