@@ -42,7 +42,7 @@ public final class MNDConfiguration extends WrappedConfig {
 		return CONFIG.farming.resurgentFarmlandHeatSearchRadius;
 	}
 
-	public static int enableForceInjectLoot() {
+	public static boolean enableForceInjectLoot() {
 		return CONFIG.settings.enableForceInjectLoot;
 	}
 
