@@ -42,6 +42,10 @@ public final class MNDConfiguration extends WrappedConfig {
 		return CONFIG.farming.resurgentFarmlandHeatSearchRadius;
 	}
 
+	public static boolean enableForceInjectLoot() {
+		return CONFIG.settings.enableForceInjectLoot;
+	}
+
 	public static class Settings implements Section {
 		@Comment("Allows Piglins to barter food items and Strider Rocks from this mod." + "Special hunting-related trades are not affected.")
 		public boolean enablePiglinFoodTrades = true;
@@ -52,6 +56,9 @@ public final class MNDConfiguration extends WrappedConfig {
 
 		@Comment("Allows Frogs to seek out Magma Cake and Magma Cake Slices," + "and lets players feed slices directly to a Frog.")
 		public boolean enableFrogMagmaCakeBehavior = true;
+
+		@Comment("Force inject loot drops regardless of datapack status.")
+		public boolean enableForceInjectLoot = false;
 	}
 
 	public static class Farming implements Section {
@@ -71,19 +78,3 @@ public final class MNDConfiguration extends WrappedConfig {
 		public int resurgentFarmlandHeatSearchRadius = 7;
 	}
 }
-
-//	public static class Crafting implements Section {
-//		@Comment(value = "Master switch for the Blazier. Disabling hides its creative-tab item and recipes," + "and stops its behavior.")
-//		public boolean enableBlazier = true;
-
-//		@Comment("Multiplier for cooking time in every Blazier mode." + "Preserves the original 6 / 3 / 1 / 6 proportions; higher values take longer.")
-//		@FloatRange(min = 0.0, max = 64.0)
-//		public double blazierCookingTimeMultiplier = 1.0;
-
-//		@Comment("Enables Nether Brick, Red Nether Brick and Blackstone Brick Cabinets." + "Disabling hides their creative-tab items and recipes.")
-//		public boolean enableStoneCabinets = true;
-
-//	public static class World implements Section {
-//		@Comment("Controls whether Powdery Cane patches generate naturally in Crimson Forests.")
-//		public boolean generatePowderyCane = true;
-//	}
